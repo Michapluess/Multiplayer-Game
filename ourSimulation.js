@@ -103,9 +103,9 @@ function killplayer(p) {
 
 function giveSpawnPosition() {
 	
-	Math.sin(Math.random()*360) = g
-	Math.sin(Math.random()*360) = h
-	(g**2 + h**2) = 75**2
+	(Math.random()*360) = g 
+	(Math.cosin(g)*(75**2)) = b
+	(Math.sin(g)(75**2)) = a
 	player.x = g
 	player.y = h 
 
