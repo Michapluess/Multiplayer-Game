@@ -83,6 +83,8 @@ function create_player(id) {
 	return player
 }
 
+
+
 function checkifoffmap() {
 	for (let p of players) {
 		if (p.x**2 + p.y**2 > (circlesize/25*26)**2) {
@@ -99,7 +101,22 @@ function killplayer(p) {
 }
 
 
+function giveSpawnPosition() {
+	
+	Math.sin(Math.random()*360) = g
+	Math.sin(Math.random()*360) = h
+	(g**2 + h**2) = 75**2
+	player.x = g
+	player.y = h 
 
+	
+
+	let playerx = player.x
+	let playery = player.y
+
+	return {playerx, playery};
+
+}
 
 function setup() {
 	t = 0;
