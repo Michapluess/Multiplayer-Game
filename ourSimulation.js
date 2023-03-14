@@ -100,9 +100,30 @@ function killplayer(p) {
 	p.stepstogo = 128
 }
 
+function checkSpwanCollision(radius, x, y ){
+	count = 0
+	x = 0
+	y = 0
+	for (let p of players){
+		count += 1
+		for (let p2 of players.slice(count)){
+			distancex = p.x - p2.x
+			distancey = p.y - p2.y
+			distance = (distancex**2 + distancey**2)**0.5
 
-function giveSpawnPoint() {
+			if (distance <= radius) {
+				return true
+			}
+
+		}
+	}
+}
+
+function giveSpawnPoint(player) {
 	
+	g = 0
+	b = 0
+	a = 0
 	(Math.random()*360) = g 
 	(Math.cosin(g)*(75**2)) = b
 	(Math.sin(g)(75**2)) = a
@@ -114,6 +135,9 @@ function giveSpawnPoint() {
 	let playerx = player.x
 	let playery = player.y
 
+
+
+	checkSpwanCollision(7, player.x, player.y)
 	
 
 	return {playerx, playery};
@@ -208,6 +232,8 @@ function userchange(data) {
 	}
 	
 }
+
+
 
 function checkcollision(radius){
 	count = 0
