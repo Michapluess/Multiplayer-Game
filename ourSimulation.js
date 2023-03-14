@@ -119,26 +119,29 @@ function checkSpwanCollision(radius, x, y ){
 	}
 }
 
-function giveSpawnPoint(player) {
+
+
+function giveSpawnPoint() {
 	
 	g = 0
 	b = 0
 	a = 0
 	(Math.random()*360) = g 
-	(Math.cosin(g)*(75**2)) = b
-	(Math.sin(g)(75**2)) = a
-	player.x = g
-	player.y = h 
+	collided = True
+	while (collided == True){
+		g += 30
+		(Math.cosin(g)*(75**2)) = b
+		(Math.sin(g)(75**2)) = a
+		mathpos = [g, h]
+		for (let p of players){
+			collided = False
+			collision = checkSpwanCollision(7, p, mathpos)
+			if (collision = True){
+				collided = True
+			}
+		}
+	}
 
-	
-
-	let playerx = player.x
-	let playery = player.y
-
-
-
-	checkSpwanCollision(7, player.x, player.y)
-	
 
 	return {playerx, playery};
 
