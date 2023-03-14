@@ -70,7 +70,7 @@ function giveSpawnPoint() {
 	g = 0
 	b = 0
 	a = 0
-	g = (Math.floor(Math.random())*360)
+	g = (Math.floor(Math.random()*10)*36)
 	collided = true
 	while (collided == true){
 		g += 30
@@ -79,7 +79,7 @@ function giveSpawnPoint() {
 		mathpos = [a, b]
 		for (let p of players){
 			collided = false
-			collision = checkSpwanCollision(7, p, mathpos)
+			collision = checkSpawnCollision(7, p, mathpos)
 			if (collision = true){
 				collided = true
 			}
@@ -91,7 +91,7 @@ function giveSpawnPoint() {
 
 }
 
-function checkSpwanCollision(radius, x, y ){
+function checkSpawnCollision(radius, x, y ){
 	count = 0
 	x = 0
 	y = 0
@@ -128,9 +128,9 @@ function create_player(id) {
 	console.log('playercolor is', color)
 	players.push(player)
 	changecolor()
-	giveSpawnPoint()
-	player.x = mathpos[0] 
-	player.y = mathpos[1]
+	//giveSpawnPoint()
+	//player.x = mathpos[0] 
+	//player.y = mathpos[1]
 	
 	return player
 }
