@@ -101,7 +101,7 @@ function killplayer(p) {
 }
 
 
-function giveSpawnPosition() {
+function giveSpawnPoint() {
 	
 	(Math.random()*360) = g 
 	(Math.cosin(g)*(75**2)) = b
@@ -113,6 +113,8 @@ function giveSpawnPosition() {
 
 	let playerx = player.x
 	let playery = player.y
+
+	
 
 	return {playerx, playery};
 
@@ -197,7 +199,7 @@ function userchange(data) {
 	for (let i of data.slice(1)){
 		player = findPlayerById(i)
 		if (!player){
-			player = create_player(i)
+			player = create_player(i)	//hier GiveSpawnPoint einbauen für Startpositionen von player (weiss nicht obs geht).
 			msg = ['color', player.colorhsv[0], player.colorhsv[1], player.colorhsv[2]]
 			ws.sendToUser(msg, i)
 		}
