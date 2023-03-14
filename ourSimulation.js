@@ -64,40 +64,31 @@ players = []
 
 
 
-function create_player(id) {
+
+function giveSpawnPoint() {
 	
-	let temp = hsvToHex(color)
-	let color2 = parseInt(temp.slice(1), 16)
-	let player = new Circle({r: 3.5, x: 0, y: 0, color:color2});
-	player.vx = 0
-	player.vy = 0
-	player.ax = 0
-	player.ay = 0
-	player.boost = 0
-	player.id = id
-	player.colorhsv = [color[0], color[1], color[2]]
-	console.log('playercolor is', color)
-	players.push(player)
-	changecolor()
-	
-	return player
-}
-
-
-
-function checkifoffmap() {
-	for (let p of players) {
-		if (p.x**2 + p.y**2 > (circlesize/25*26)**2) {
-			killplayer(p)
+	g = 0
+	b = 0
+	a = 0
+	g = (Math.random()*360)
+	collided = true
+	while (collided == true){
+		g += 30
+		b = (Math.cos(g)*(75**2))
+		a = (Math.sin(g)*(75**2)) 
+		mathpos = [a, b]
+		for (let p of players){
+			collided = false
+			collision = checkSpwanCollision(7, p, mathpos)
+			if (collision = true){
+				collided = true
+			}
 		}
 	}
-}
 
-function killplayer(p) {
-	//p.x = -420000
-	ws.sendToUser('GameOver', p.id)
-	players = players.filter(function(name) {return name !== p.id})
-	p.stepstogo = 128
+
+	return (mathpos);
+
 }
 
 function checkSpwanCollision(radius, x, y ){
@@ -119,33 +110,54 @@ function checkSpwanCollision(radius, x, y ){
 	}
 }
 
-
-
-function giveSpawnPoint() {
+function create_player(id) {
 	
-	g = 0
-	b = 0
-	a = 0
-	(Math.random()*360) = g 
-	collided = True
-	while (collided == True){
-		g += 30
-		(Math.cosin(g)*(75**2)) = b
-		(Math.sin(g)(75**2)) = a
-		mathpos = [g, h]
-		for (let p of players){
-			collided = False
-			collision = checkSpwanCollision(7, p, mathpos)
-			if (collision = True){
-				collided = True
-			}
+	let temp = hsvToHex(color)
+	let color2 = parseInt(temp.slice(1), 16)
+	let player = new Circle({r: 3.5, x: 0, y: 0, color:color2});
+	mathpos = 0
+	player.x = 0
+	player.y = 0
+	player.vx = 0
+	player.vy = 0
+	player.ax = 0
+	player.ay = 0
+	player.boost = 0
+	player.id = id
+	player.colorhsv = [color[0], color[1], color[2]]
+	console.log('playercolor is', color)
+	players.push(player)
+	debugger
+	changecolor()
+	giveSpawnPoint()
+	player.x = mathpos[0] 
+	player.y = mathpos[1]
+	
+	return player
+}
+
+
+
+function checkifoffmap() {
+	for (let p of players) {
+		if (p.x**2 + p.y**2 > (circlesize/25*26)**2) {
+			killplayer(p)
 		}
 	}
-
-
-	return {playerx, playery};
-
 }
+
+function killplayer(p) {
+	//p.x = -420000
+	ws.sendToUser('GameOver', p.id)
+	players = players.filter(function(name) {return name !== p.id})
+	p.stepstogo = 128
+}
+
+
+
+
+
+
 
 function setup() {
 	t = 0;
