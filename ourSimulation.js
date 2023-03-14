@@ -70,7 +70,7 @@ function giveSpawnPoint() {
 	g = 0
 	b = 0
 	a = 0
-	g = (Math.random()*360)
+	g = (Math.floor(Math.random())*360)
 	collided = true
 	while (collided == true){
 		g += 30
@@ -127,7 +127,6 @@ function create_player(id) {
 	player.colorhsv = [color[0], color[1], color[2]]
 	console.log('playercolor is', color)
 	players.push(player)
-	debugger
 	changecolor()
 	giveSpawnPoint()
 	player.x = mathpos[0] 
